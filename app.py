@@ -12,10 +12,12 @@ from sqlalchemy.sql import exists
 
 from flask import Flask, jsonify
 
+#
+#
+#
 
-#################################################
 # Database Setup
-#################################################
+
 engine = create_engine("sqlite:///Resources/hawaii.sqlite")
 
 # reflect an existing database into a new model
@@ -38,6 +40,10 @@ app = Flask(__name__)
 # Flask Routes
 #################################################
 
+#
+#
+#
+
 #Start at the homepage.
 #List all the available routes.
 
@@ -58,8 +64,11 @@ def welcome():
 
 
 #Convert query results to a dictionary using `date` as the key and `tobs` as the value
+
 @app.route("/api/v1.0/precipitation") 
+
 def precipitation():
+
     # Create session (link) from Python to the DB
     session = Session(engine)
 
@@ -89,13 +98,15 @@ def precipitation():
 
     return jsonify(precipitation_date_tobs)
 
-
-
+#
+#
+#
 
 #Return a JSON list of stations from the dataset
 
 @app.route("/api/v1.0/stations") 
 def stations():
+
     # Create session (link) from Python to the DB
     session = Session(engine)
 
@@ -108,27 +119,16 @@ def stations():
     return jsonify(station_details)
 
 
-
-
-
-
+#
+#
+#
 
 # Query the dates and temperature observations of the most active station for the last year of data
+
 @app.route("/api/v1.0/tobs") 
 def tobs():
     # Create our session (link) from Python to the DB
     session = Session(engine)
-
-    # # Query Measurements for latest date and calculate query_start_date
-    # latest_date = (session.query(Measurement.date)
-    #                       .order_by(Measurement.date
-    #                       .desc())
-    #                       .first())
-    
-    # latest_date_str = str(latest_date)
-    # latest_date_str = re.sub("'|,", "",latest_date_str)
-    # latest_date_obj = dt.datetime.strptime(latest_date_str, '(%Y-%m-%d)')
-    # query_start_date = dt.date(latest_date_obj.year, latest_date_obj.month, latest_date_obj.day) - dt.timedelta(days=366)
 
      # Find the most recent date in the data set.
 
@@ -168,12 +168,13 @@ def tobs():
     return jsonify(tobs_list)
 
 
+#
+#
+#
 
 
 #Start Route
-
 #Calculate `TMIN`, `TAVG`, and `TMAX` for all dates greater than and equal to the start date
-
 
 @app.route("/api/v1.0/<start>")
 def start_only(start):
@@ -216,8 +217,14 @@ def start_only(start):
                         'The highest Temperature was: ' + str(tmax) + ' F'])
     return jsonify(result_printout)
 
-   
-   
+
+
+#
+# 
+#    
+
+
+#Start and End Route   
 
 @app.route("/api/v1.0/<start>/<end>") # Calculate the `TMIN`, `TAVG`, and `TMAX` for dates between the start and end date inclusive
 def start_end(start, end):
@@ -273,9 +280,22 @@ def start_end(start, end):
     	return jsonify({"error": f"Input End Date {end} not valid. Date Range is {date_range_min_str} to {date_range_max_str}"})
     
 
+#
+#
+#   
 
-    
-
+#Running a Flask web application.
 
 if __name__ == '__main__':
      app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+

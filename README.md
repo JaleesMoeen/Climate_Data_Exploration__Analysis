@@ -97,8 +97,61 @@ Station analysis display the temperature observations of the data from August 20
 
 ### 5 Flask API for Climate Data
 
+A climate flask app.py is  created and sets different routes for different results. I use the Flask jsonify function to convertAPI data to a valid JSON response object.
+
+#### 5.1 Home Route
+
+List all the available routes.
+
+
+![Alt text](images/1_home_route.png)
 
 
 
+#### 5.2 Percipitation ( /api/v1.0/precipitation )
+
+Convert the query results from your precipitation analysis (i.e. retrieve only the last 12 months of data) to a dictionary using date as the key and prcp as the value.
 
 
+![Alt text](images/2_route_percipitation.png)
+
+
+#### 5.3 Stations ( /api/v1.0/stations )
+
+Return a list of stations from the dataset.
+
+
+![Alt text](images/3_route_stations.png)
+
+
+#### 5.4 Temperature Observations  ( /api/v1.0/tobs )
+
+Query the dates and temperature observations of the most-active station for the previous year of data.
+
+
+![Alt text](images/4_route_tobs.png)
+
+
+#### 5.5 Dyanmic Route for Start/End Date 
+
+##### ( /api/v1.0/<start> and /api/v1.0/<start>/<end>  )
+
+- Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.
+
+- For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.
+
+- For a specified start date and end date, calculate TMIN, TAVG, and TMAX for the dates from the start date to the end date, inclusive.
+
+
+![Alt text](images/5_route_date.png)
+
+
+- When the user provide the start/end date in either wrong format or out of range of the dataset. API shows the prompt:
+
+
+![Alt text](images/6_dynamic_prompt.png)
+
+
+### 6 Conclusion
+
+We can the information about the climate as the data exploration & routes Flask API provides results successfully.

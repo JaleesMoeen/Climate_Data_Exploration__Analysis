@@ -132,9 +132,8 @@ Query the dates and temperature observations of the most-active station for the 
 ![Alt text](images/4_route_tobs.png)
 
 
-#### 5.5 Dyanmic Route for Start/End Date 
+#### 5.5 Dyanmic Route for Start/End Date    ( /api/v1.0/<start> and /api/v1.0/<start>/<end> )
 
-##### ( /api/v1.0/<start> and /api/v1.0/<start>/<end>  )
 
 - Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.
 
@@ -146,7 +145,7 @@ Query the dates and temperature observations of the most-active station for the 
 ![Alt text](images/5_route_date.png)
 
 
-- When the user provide the start/end date in either wrong format or out of range of the dataset. API shows the prompt:
+When the user provide the start/end date in either wrong format or out of range of the dataset. API shows the prompt:
 
 
 ![Alt text](images/6_dynamic_prompt.png)
